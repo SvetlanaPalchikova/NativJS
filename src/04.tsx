@@ -1,33 +1,47 @@
-const ages = [18, 20, 22, 1, 100, 90, 14];
+import {useState} from "react";
 
-const predicate = (age: number) => {
-    return age > 90
+
+type PropsType = {
+    // on: boolean;
 }
-// const oldAges = ages.filter(predicate)
-// const oldAges = [100]; //>90
-type CourseType = {
-    title: string
-    price: number
+
+
+function  OnOff(props: PropsType) {
+
+    let [on, setOn] = useState(false)
+
+    const onStyle = {
+        width: "30px",
+        height:"20px",
+        border: "1px solid black",
+        display: "inline-block",
+        backgroundColor: on ? "green" : "white",
+    };
+    const offStyle = {
+        width: "30px",
+        height:"20px",
+        border: "1px solid black",
+        display: "inline-block",
+        marginLeft: "2px",
+        backgroundColor: on ? "white" : "red",
+    };
+    const indicatorStyle = {
+        width: "10px",
+        height:"10px",
+        borderRadius:"5px",
+        border: "1px solid black",
+        marginLeft: "5px",
+        display: "inline-block",
+        backgroundColor: on ? "green" : "red",
+
+    }
+
+    return <div>
+        <div style = {onStyle} onClick={() => { setOn (true)}}>On</div>
+        <div style = {offStyle} onClick={() => { setOn(false)}}>Off</div>
+        <div style = {indicatorStyle}></div>
+    </div>
+
 }
-//  чтобы упростить запись убираем return и прописываем условия в filtr
-const oldAges = ages.filter(age => age > 90)
 
-const courses = [
-    {title: "css", price: 100},
-    {title: "JS", price: 200},
-    {title: "REACT", price: 150}
-]
-//  const chipPredicate = (course: CourseType)=>{
-//  return course.price<160;
-//  }              эту функцию можно записать короче без return
-
-//и мы эту фукцию засовываем в метод filtr
-const chipCourses=courses.filter(course=>course.price<160);
-// const chipCourses = [
-//     {title: "css", price: 100},
-//     {title: "REACT", price: 150}
-// ]
-//
-
-
-
+export default OnOff;
