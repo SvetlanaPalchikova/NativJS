@@ -34,12 +34,18 @@ alert( sum(3)(6) ); // 9
 
 // Task 02
 // Реализовать функцию makeCounter которая работает следующим образом:
-// const counter = makeCounter();
-// counter(); // 1
-// counter(); // 2
-// const counter2 = makeCounter();
-// counter2(); // 1
-// counter(); // 3
+function makeCounter() {
+    let count = 0;
+    return function() {
+        return count++;
+    };
+}
+const counter = makeCounter();
+counter(); // 1
+counter(); // 2
+const counter2 = makeCounter();
+counter2(); // 1
+counter(); // 3
 
 // Task 03
 // Переписать функцию из Task 02 так, что бы она принимала число в качестве аргумента и это число было стартовым значением счетчика
